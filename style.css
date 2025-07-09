@@ -1,11 +1,11 @@
 /* Variables CSS para colores y fuentes */
 :root {
     /* Colores basados en tu imagen de MoodMasks */
-    --mood-yellow: #FDD874;
+    --mood-yellow: #ffbb00e7;
     /* Amarillo pastel */
-    --mood-blue: #7DD2D7;
+    --mood-blue: #3af5ffc9;
     /* Azul turquesa pastel */
-    --mood-pink: #F8C3CA;
+    --mood-pink: #ff07c18a;
     /* Rosa pastel */
 
     /* Colores para texto y fondo basados en la paleta */
@@ -410,7 +410,7 @@ nav ul li a:hover {
 /* Featured Products (Mascarillas Destacadas) */
 .featured-products {
     padding: 80px 0;
-    background-color: #76cece8e;
+    background-color: #94fdfd8e;
     /* CAMBIO: Fondo rosa pastel (40%) */
     position: relative;
     z-index: 1;
@@ -493,7 +493,7 @@ nav ul li a:hover {
 /* Why Us Section (Beneficios) */
 .why-us {
     padding: 80px 0;
-    background-color: #79e0ee79;
+    background-color: #38e5fc79;
     /* CAMBIO: Fondo azul turquesa (45%) */
     position: relative;
     z-index: 1;
@@ -580,7 +580,7 @@ nav ul li a:hover {
 
 /* Newsletter Signup (Novedades) */
 .newsletter-signup {
-    background-color: #f5a3cc98;
+    background-color: #ff5bad98;
     /* CAMBIO: Fondo rosa pastel (para variar y distribuir) */
     padding: 70px 0;
     text-align: center;
