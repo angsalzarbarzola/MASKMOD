@@ -1,11 +1,11 @@
 /* Variables CSS para colores y fuentes */
 :root {
     /* Colores basados en tu imagen de MoodMasks */
-    --mood-yellow: #ffbb00e7;
+    --mood-yellow: #ff8a05c9;
     /* Amarillo pastel */
-    --mood-blue: #3af5ffc9;
+    --mood-blue: #eb3380b2;
     /* Azul turquesa pastel */
-    --mood-pink: #ff07c18a;
+    --mood-pink: #731ac7c7;
     /* Rosa pastel */
 
     /* Colores para texto y fondo basados en la paleta */
@@ -42,7 +42,6 @@
 body {
     font-family: var(--font-body);
     line-height: 1.6;
-    color: var(--primary-color);
     /* Color de texto por defecto para la mayoría de elementos */
     -webkit-font-smoothing: antialiased;
     /* Mejorar la renderización de fuentes */
@@ -54,28 +53,29 @@ body {
 
 /* --- NUEVO ESTILO PARA EL FONDO ANIMADO --- */
 .background-animated-gradient {
-    width: 100vw;
-    /* Ancho de la ventana */
-    height: 100vh;
-    /* Alto de la ventana */
-    /* Gradiente gradual con distribución de colores (40% rosa, 45% azul, 15% amarillo) */
-    background: linear-gradient(45deg,
-        var(--mood-pink) 20%,
-        /* Rosa pastel comienza */
-        var(--mood-blue) 40%,
-        /* Transición a azul turquesa en el 40% */
-        var(--mood-yellow) 85%,
-        /* Transición a amarillo pastel en el 85% */
-        var(--mood-pink) 100%
-        /* Amarillo pastel se extiende hasta el final */
-    );
-    background-size: 400% 400%;
-    animation: moveGradient 10s ease infinite;
-    position: fixed;
+    position: absolute;
+    /* en vez de fixed */
     top: 0;
     left: 0;
-    z-index: -1;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    /* detrás del contenido del hero */
+    background: linear-gradient(-45deg,
+            var(--mood-yellow),
+            var(--mood-blue),
+            var(--mood-pink),
+            #ff8a05);
+    background-size: 400% 400%;
+    animation: moveGradient 10s ease infinite;
 }
+
+.hero {
+    position: relative;
+    /* necesario para contener el fondo animado */
+    overflow: hidden;
+}
+
 
 /* --- KEYFRAMES PARA LA ANIMACIÓN DEL FONDO --- */
 @keyframes moveGradient {
@@ -410,8 +410,9 @@ nav ul li a:hover {
 /* Featured Products (Mascarillas Destacadas) */
 .featured-products {
     padding: 80px 0;
-    background-color: #94fdfd8e;
-    /* CAMBIO: Fondo rosa pastel (40%) */
+    background: url('img/natyra.jpg') center/cover no-repeat fixed;
+    color: #fff;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
     position: relative;
     z-index: 1;
 }
@@ -490,62 +491,56 @@ nav ul li a:hover {
     transform: translateY(-2px);
 }
 
-/* Why Us Section (Beneficios) */
+/* --- Sección Beneficios (Why Us) --- */
 .why-us {
-    padding: 80px 0;
-    background-color: #38e5fc79;
-    /* CAMBIO: Fondo azul turquesa (45%) */
-    position: relative;
-    z-index: 1;
-}
-
-.why-us h2 {
-    color: var(--white);
-    /* CAMBIO: Título blanco para contrastar con el fondo azul */
+  background-color: #b3e5fc; /* azul suave */
+  padding: 80px 0;
 }
 
 .benefits-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-    text-align: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  text-align: center;
 }
 
 .benefit-item {
-    padding: 30px;
-    border-radius: 12px;
-    background: var(--lighter-bg);
-    /* Fondo ligeramente más oscuro para los ítems */
-    box-shadow: 0 4px 10px var(--shadow-light);
-    transition: background-color 0.3s ease, transform 0.2s ease;
+  background: #fff;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
 }
 
 .benefit-item:hover {
-    background-color: #eef5f5;
-    transform: translateY(-5px);
+  transform: translateY(-5px);
 }
 
+/* --- IMÁGENES DE BENEFICIOS --- */
 .benefit-item img {
-    width: 100%; /* Make image take full width of its container */
-    aspect-ratio: 1 / 1; /* Force a 1:1 aspect ratio for a perfect square */
-    object-fit: cover; /* Cover the square area, cropping if necessary */
-    border: 3px solid var(--light-bg); /* Add a border around the image */
-    border-radius: 12px; /* Slightly rounded corners for the square */
-    margin-bottom: 20px; /* Adjusted margin bottom */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Slightly stronger shadow */
+  width: 100%;
+  height: 220px;          /* tamaño fijo uniforme */
+  object-fit: cover;      /* mantiene proporciones y recorta suavemente */
+  object-position: center;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.benefit-item img:hover {
+  transform: scale(1.05); /* pequeño zoom al pasar el mouse */
 }
 
 .benefit-item h3 {
-    color: var(--primary-color);
-    /* Títulos de beneficios en amarillo */
-    font-size: 1.5em;
-    margin-bottom: 10px;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #333;
 }
 
 .benefit-item p {
-    color: var(--secondary-text);
-    /* Texto gris para el párrafo */
-    font-size: 0.95em;
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.5;
 }
 
 /* New section for Sustainability */

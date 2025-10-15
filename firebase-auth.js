@@ -220,3 +220,45 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+const cartItemCountElement = document.getElementById("cart-item-count");
+// --- Redirección a WhatsApp al hacer clic en el carrito ---
+const cartIcon = document.querySelector(".cart-icon");
+
+// Tu número de WhatsApp en formato internacional
+const whatsappNumber = "51991608720"; // ← cámbialo por tu número real
+
+if (cartIcon) {
+    cartIcon.addEventListener("click", () => {
+        const mensaje = encodeURIComponent(
+            "¡Hola! Estoy interesadx en comprar mis MoodMasks. ¿Podrías brindarme más información?"
+        );
+        const whatsappURL = `https://wa.me/${whatsappNumber}?text=${mensaje}`;
+        window.open(whatsappURL, "_blank");
+    });
+}
+// --- Funcionalidad del Formulario de Suscripción ---
+const newsletterForm = document.querySelector("#novedades form");
+
+if (newsletterForm) {
+    newsletterForm.addEventListener("submit", (event) => {
+        event.preventDefault(); // Evita que la página se recargue
+
+        const emailInput = newsletterForm.querySelector("input[type='email']");
+        const email = emailInput.value.trim();
+
+        if (email) {
+            showAlert(
+                "¡Gracias por unirte!",
+                "Te estaremos enviando correos con nuevas promociones y novedades 🌸",
+                "success"
+            );
+            emailInput.value = ""; // Limpia el campo después de enviar
+        } else {
+            showAlert(
+                "Correo inválido",
+                "Por favor, ingresa un correo electrónico válido.",
+                "error"
+            );
+        }
+    });
+}
